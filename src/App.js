@@ -5,11 +5,11 @@ import ShopPage from './pages/shop/shop'
 import Header from './components/header/header'
 import SingInSingUpPage from './pages/singin-signup/signin-signup'
 import { auth, createUserProfileDocument } from './firebase/utils'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { setCurrentUser } from './redux/user/actions'
 
-const App = () => {
-    const [currentUser, setCurrentUser] = useState(null);
-
+const App = ({ setCurrentUser }) => {
     useEffect(() => {
         const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
@@ -31,11 +31,9 @@ const App = () => {
         }
     }, [])
 
-    console.log(currentUser)
-
     return (
         <div>
-            <Header currentUser={currentUser} />
+            <Header />
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/shop' element={<ShopPage />} />
@@ -45,4 +43,8 @@ const App = () => {
     )
 }
 
-export default App
+const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(App)
