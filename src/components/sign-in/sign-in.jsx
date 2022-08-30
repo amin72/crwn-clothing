@@ -2,7 +2,6 @@ import { useState } from "react"
 import CustomButton from "../custom-button/custom-button"
 import FormInput from '../form-input/form-input'
 import { signInWithGoogle } from "../../firebase/utils"
-import { signInWithPopup } from "firebase/auth"
 
 
 import './sign-in.scss'
