@@ -5,7 +5,7 @@ import { auth, createUserProfileDocument } from '../../firebase/utils'
 import './sign-up.scss'
 import { useState } from 'react'
 
-const SignUp = ({}) => {
+const SignUp = () => {
     const [displayName, setDisplayName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
