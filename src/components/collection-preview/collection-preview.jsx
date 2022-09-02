@@ -9,9 +9,7 @@ const CollectionPreview = ({ title, items }) => (
                 .map(item => (
                     <CollectionItem
                         key={item.id}
-                        name={item.name}
-                        imageUrl={item.imageUrl}
-                        price={item.price}
+                        item={item}
                     />
             ))}
         </div>
