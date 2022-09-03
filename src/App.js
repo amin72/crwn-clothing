@@ -1,15 +1,21 @@
-import './App.scss'
 import { Routes, Route, Navigate } from 'react-router-dom'
+
 import HomePage from './pages/homepage/homepage'
 import ShopPage from './pages/shop/shop'
-import Header from './components/header/header'
+import CheckoutPage from './pages/checkout/checkout'
 import SingInSingUpPage from './pages/singin-signup/signin-signup'
+
+import Header from './components/header/header'
+
 import { auth, createUserProfileDocument } from './firebase/utils'
+
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/actions'
 import { selectCurrentUser } from './redux/user/selectors'
 import { createStructuredSelector } from 'reselect'
+
+import './App.scss'
 
 const App = ({ setCurrentUser, currentUser }) => {
     useEffect(() => {
@@ -39,6 +45,7 @@ const App = ({ setCurrentUser, currentUser }) => {
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/shop' element={<ShopPage />} />
+                <Route path='/checkout' element={<CheckoutPage />} />
                 <Route
                     path='/signin'
                     element={
